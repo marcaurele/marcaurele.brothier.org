@@ -1,0 +1,74 @@
+#
+# This config.toml is an example and based on the ananke theme
+# https://github.com/theNewDynamic/gohugo-theme-ananke/.
+#
+# If you use a different theme, you might need to change the content of config.toml
+# to your liking.
+#
+
+#
+# Theme setup
+#
+# If you use go mod to install your theme, you must use the URL of the theme.
+# If your theme is in the themes directory, you just need to specify its name.
+#
+#theme = "ananke"
+theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
+
+baseurl = "/"
+title = "Personal site"
+contentdir    = "content"
+layoutdir     = "layouts"
+publishdir    = "public"
+languageCode = "en-us"
+resourceDir = "../resources"
+
+DefaultContentLanguage = "en"
+SectionPagesMenu = "main"
+Paginate = 6 # this is set low for demonstrating with dummy content. Set to a higher number
+enableRobotsTXT = true
+
+[languages]
+  [languages.en]
+    title = "Marc-Aurèle Brothier"
+    weight = 1
+    contentDir = "content"
+
+[permalinks]
+  [permalinks.page]
+    posts = "/articles/:year-:slug"
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[params]
+  text_color = ""
+  #body_classes = "avenir bg-near-white"
+  custom_css = ["custom.css"]
+  author = "Marc-Aurèle Brothier"
+  favicon = ""
+  site_logo = ""
+  description = "Marc-Aurèle BRothier"
+  # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+  background_color_class = "bg-black"
+  recent_posts_number = 3
+
+[[params.ananke_socials]]
+name = "mastodon"
+url = "https://mastodon.social/@marcaurele"
+rel = "me"
+
+[[params.ananke_socials]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/marcaurele/"
+share = false
+
+[[params.ananke_socials]]
+name = "github"
+url = "https://github.com/marcaurele/"
+
+[[params.ananke_socials]]
+name = "gitlab"
+url = "https://gitlab.com/marcaurele/"

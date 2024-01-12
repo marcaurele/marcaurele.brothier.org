@@ -2,6 +2,8 @@
 date: 2024-01-10
 description: "Shadowing opportunity"
 featured_image: "gitlab-contribution-mug.jpeg"
+images:
+  - "gitlab-contribution-mug.jpeg"
 #tags: ["scene"]
 title: "One week shadowing Wayne Haber, Director of Engineering at GitLab"
 summary: |

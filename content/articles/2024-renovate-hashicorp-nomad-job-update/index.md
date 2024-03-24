@@ -1,11 +1,11 @@
 ---
 date: 2024-03-24
-description: "Update Nomad job's image with Renovate"
+description: "Read the image url from a Dockerfile"
 featured_image: "renovate-merge-request.png"
 images:
   - "renovate-merge-request.png"
 #tags: ["scene"]
-title: "Keep your Nomad jobs up to date with Renovate"
+title: "Keep your Nomad job's image up to date with Renovate"
 summary: |
           Having a Nomad cluster for my personal needs, I needed a way to automate the tag update with the new releases of images I'm using. I describe a trick with Nomad job definition on how to do it with Renovate or any other dependency update tool.
 

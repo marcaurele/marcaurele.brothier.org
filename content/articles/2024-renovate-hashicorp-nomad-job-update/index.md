@@ -1,6 +1,6 @@
 ---
 date: 2024-03-24
-description: "Using Renovate bot to update Nomad jobs"
+description: "Update Nomad job's image with Renovate"
 featured_image: "renovate-merge-request.png"
 images:
   - "renovate-merge-request.png"

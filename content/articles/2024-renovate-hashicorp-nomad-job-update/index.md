@@ -1,6 +1,6 @@
 ---
 date: 2024-03-24
-description: "Read the image url from a Dockerfile"
+description: "Update your Nomad job's images"
 featured_image: "renovate-merge-request.png"
 images:
   - "renovate-merge-request.png"
@@ -12,6 +12,8 @@ summary: |
 ---
 
 I run a Nomad cluster at home for my internal services which grows from time to time. It reached a level now that staying up to date with the different services' updates is too much work, and too manual for me. I neither run my service with `latest` as you do not have any control on the version. I had to find a way to automate MRs/PRs to propose updates whenever a new tag is pushed. Having discovered the power of [Renovate](https://docs.renovatebot.com/) *(highly recommended over Dependabot)*, and having it already setup to push updates in my development projects, I wanted to leverage it for my infrastructure configuration.
+
+_EDITS: Renovate can be configured to directly parse the HCL file to update the `image` line, see the edits from the last paragraph._
 
 ## Nomad job definitions
 
@@ -94,3 +96,27 @@ It allows to reference the image later in the job definition with the local vari
 Renovate is now able to open merge requests to keep up to date the `Dockerfile` used for each service:
 
 ![Merge request to update Grafana image tag](renovate-merge-request-diff.png)
+
+## Direct update with Renovate (edits)
+
+*Update thanks to [\_duncan\_](https://mastodon.social/@_duncan_@mastodon.online).*
+
+\_duncan\_ [pointed out to me](https://mastodon.social/@_duncan_@mastodon.online/113035100296097630) that the docker datasource could be configured to update directly the HCL file for the line containing the `image` attribute. A custom manager should be added to the configuration:
+
+```json
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "datasourceTemplate": "docker",
+      "fileMatch": ["\\.hcl$"],
+      "matchStrings": [
+        "\\s*image\\s*=\\s*\\\"(?<depName>.*?):(?<currentValue>.*?)\\\""
+      ]
+    }
+  ]
+}
+```
+
+*It works brilliantly.* No need to read a `Dockerfile` to extract the image tag value.

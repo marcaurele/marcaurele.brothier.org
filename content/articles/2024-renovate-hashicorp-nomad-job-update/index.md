@@ -13,6 +13,8 @@ summary: |
 
 I run a Nomad cluster at home for my internal services which grows from time to time. It reached a level now that staying up to date with the different services' updates is too much work, and too manual for me. I neither run my service with `latest` as you do not have any control on the version. I had to find a way to automate MRs/PRs to propose updates whenever a new tag is pushed. Having discovered the power of [Renovate](https://docs.renovatebot.com/) *(highly recommended over Dependabot)*, and having it already setup to push updates in my development projects, I wanted to leverage it for my infrastructure configuration.
 
+_EDITS: Renovate can be configured to directly parse the HCL file to update the `image` line, see the edits from the last paragraph._
+
 ## Nomad job definitions
 
 With Nomad's job definition, the `image` attribute contains the link to the registry and the tag to use. This syntax is not recognized by Renovate bot as it cannot parse the HCL file.
@@ -95,7 +97,7 @@ Renovate is now able to open merge requests to keep up to date the `Dockerfile` 
 
 ![Merge request to update Grafana image tag](renovate-merge-request-diff.png)
 
-## Direct update with Renovate
+## Direct update with Renovate (edits)
 
 *Update thanks to [\_duncan\_](https://mastodon.social/@_duncan_@mastodon.online).*
 

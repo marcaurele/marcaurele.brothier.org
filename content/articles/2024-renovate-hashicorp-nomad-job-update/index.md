@@ -99,9 +99,9 @@ Renovate is now able to open merge requests to keep up to date the `Dockerfile` 
 
 ## Direct update with Renovate (edits)
 
-*Update thanks to [\_duncan\_](https://mastodon.social/@_duncan_@mastodon.online).*
+*Update thanks to [\_duncan\_](https://mastodon.online/@_duncan_).*
 
-\_duncan\_ [pointed out to me](https://mastodon.social/@_duncan_@mastodon.online/113035100296097630) that the docker datasource could be configured to update directly the HCL file for the line containing the `image` attribute. A custom manager should be added to the configuration:
+\_duncan\_ [pointed out to me](https://mastodon.online/@_duncan_/113035096064933672) that the docker datasource could be configured to update directly the HCL file for the line containing the `image` attribute. A custom manager should be added to the configuration:
 
 ```json
 {

@@ -1,5 +1,5 @@
-module gitlab.com/pages/hugo
+module gitlab.com/marcaurele/marcaurele.brothier.org
 
-go 1.20
+go 1.23.5
 
-require github.com/theNewDynamic/gohugo-theme-ananke v0.0.0-20231122160523-91df000ca827 // indirect
+require github.com/theNewDynamic/gohugo-theme-ananke/v2 v2.11.2 // indirect

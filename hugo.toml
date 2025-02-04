@@ -27,6 +27,13 @@ DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
 enableRobotsTXT = true
 
+
+
+[module]
+  [[module.imports]]
+    path = "github.com/theNewDynamic/gohugo-theme-ananke/v2"
+
+
 [pagination]
   pagerSize = 10
 

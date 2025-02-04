@@ -1,0 +1,58 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  HUGO_CONTAINER: hugomods/hugo:exts
+  GID:
+    sh: id -g
+  UID:
+    sh: id -u
+
+tasks:
+  default:
+    desc: Display help when no argument is given to task
+    cmds:
+      - task: help
+        silent: true
+
+  help:
+    desc: List all available tasks (default)
+    cmds:
+      - task --list-all
+
+  test:
+    desc: run the CI test step locally
+    cmds:
+      - task: build
+
+  build:
+    desc: build the pages
+    cmds:
+      - |
+        docker run --rm \
+          -v {{.USER_WORKING_DIR}}:/src \
+          -v {{.USER_WORKING_DIR}}/cache:/tmp/hugo_cache \
+          {{ .HUGO_CONTAINER }} \
+          hugo --minify
+
+  run:
+    desc: run hugo in server mode
+    cmds:
+      - |
+        docker run --rm \
+          -v {{.USER_WORKING_DIR}}:/src \
+          -v {{.USER_WORKING_DIR}}/cache:/tmp/hugo_cache \
+          -p 1313:1313 \
+          {{ .HUGO_CONTAINER }} \
+          hugo server
+
+  shell:
+    desc: start a docker shell inside the hugo build container
+    cmds:
+      - |
+        docker run --rm -it \
+          -v {{.USER_WORKING_DIR}}:/src \
+          -v {{.USER_WORKING_DIR}}/cache:/tmp/hugo_cache \
+          {{ .HUGO_CONTAINER }} \
+          sh

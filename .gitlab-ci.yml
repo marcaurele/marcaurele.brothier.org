@@ -1,14 +1,4 @@
-image: registry.gitlab.com/pages/hugo/hugo_extended:latest
-
-variables:
-  HUGO_ENV: production
-  THEME_URL: "github.com/theNewDynamic/gohugo-theme-ananke"
-
-default:
-  before_script:
-    - apk add --no-cache go curl bash npm
-    - hugo mod get -u $THEME_URL
-    - npm install postcss postcss-cli autoprefixer
+image: hugomods/hugo:exts
 
 test:
   script:
